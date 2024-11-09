@@ -1,0 +1,3 @@
+# THIS IS THE AUDIO THAT HAS BEEN UNSEEN BY THE MODEL!!!
+## Just gonna leave it here if you wanna try it out.
+## There is 4 more for each speaker that were unseen btw...
