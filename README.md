@@ -1,7 +1,7 @@
 # Real-Time-Translator
 
 ## Members:
-Gregory Grullon, Nakib Abedin, Gabriel Menkoff
+Gregory Grullon, Nakib Abedin, Gabriel Menkoff, Ofir Bitton
 
 ## Elevator Pitch:
 Real-time voice translator to make communication easier for everyone
