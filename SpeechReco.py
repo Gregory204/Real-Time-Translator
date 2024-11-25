@@ -5,8 +5,7 @@ import numpy as np
 from scipy.io.wavfile import write
 import librosa
 import matplotlib.pyplot as plt
-from tensorflow.keras.models import Sequential, load_model
-from tensorflow.keras.layers import Dense, Dropout
+from tensorflow.keras.models import load_model
 import io
 
 # Define the target speakers in a list.
@@ -62,40 +61,6 @@ def audio_to_spectrogram(file_path):
     plt.tight_layout()
     plt.savefig("spectrogram.png")
     plt.close()
-    
-def classify_gender(file_path):
-    features = extract_feature(file_path).reshape(1, -1)
-    male_prob = gender_model.predict(features, verbose=0)[0][0]
-    female_prob = 1 - male_prob
-    gender = "male" if male_prob > female_prob else "female"
-    probability = "{:.2f}".format(male_prob) if gender == "male" else "{:.2f}".format(female_prob)
-    return gender, probability
-
-# Function to create the gender classification model
-def create_model(vector_length=128):
-    model = Sequential([
-    Dense(256, input_shape=(vector_length,), activation='relu'),
-    Dropout(0.3),
-    Dense(256, activation='relu'),
-    Dropout(0.3),
-    Dense(128, activation='relu'),
-    Dropout(0.3),
-    Dense(128, activation='relu'),
-    Dropout(0.3),
-    Dense(64, activation='relu'),
-    Dropout(0.3),
-    Dense(1, activation='sigmoid')
-    ])
-    model.compile(loss='binary_crossentropy', metrics=['accuracy'], optimizer='adam')
-    return model
-
-# Load the pre-trained model
-gender_model = create_model()
-
-# The saved_model.h5 is the pretrained model that was used.
-gender_model.load_weights("NEW_MODELS/saved_model.h5")
-
-####################################################
 
 # Function to classify the speaker
 def classify_speaker(file_path):
@@ -123,40 +88,6 @@ def classify_speaker(file_path):
 # Load Speaker Reco Model
 model = load_model('NEW_MODELS/CUR_speaker_model.h5')
 
-# Streamlit app
-st.title("Voice Correlation Recognition")
-st.write("This application is still undergoing fixes & updates ;-;")
-
-# Option to upload a file
-uploaded_file = st.file_uploader("Upload an audio file", type=['wav', 'mp3'])
-
-if uploaded_file is not None:
-    with open("uploaded_audio.wav", "wb") as f:
-        f.write(uploaded_file.getbuffer())
-    st.audio(uploaded_file, format='audio/wav')
-
-    if st.button("Submit"):
-        try:
-            audio_to_spectrogram("uploaded_audio.wav")
-            st.image("spectrogram.png", caption="Mel Spectrogram of the uploaded audio file", use_column_width="auto", width=200)
-            speaker, probability, _ = classify_speaker("uploaded_audio.wav")
-            gender, gen_probability = classify_gender("uploaded_audio.wav")
-            
-            # Whats the gender of speaker?
-            st.write(f"Predicted Gender: {gender}")
-
-            # Whats the shot of speaker being a male or female
-            st.write(f"Gender Probability: {gen_probability}")
-
-            # Which speaker is it?
-            st.write(f"Predicted Speaker: {speaker}")
-
-            # Whats the chances of being spealer?
-            st.write(f"Speaker Probability: {probability}")
-            
-        except Exception as e:
-            st.error(f"Error occurred: {e}")
-
 # Record audio with sounddevice
 def record_audio(duration=8, samplerate=22050):
     st.write("Recording...")
@@ -164,29 +95,3 @@ def record_audio(duration=8, samplerate=22050):
     sd.wait()  # Wait until recording is finished
     write("recorded_audio.wav", samplerate, audio_data)  # Save as WAV file
     return "recorded_audio.wav"
-
-if st.button("Record Audio"):
-    wav_file_path = record_audio(duration=8)
-    st.write(f"Audio recorded and saved to {wav_file_path}") # save auido
-    st.audio(wav_file_path) # show audio
-    audio_to_spectrogram(wav_file_path) # melspectogram of recorded audio
-    st.image("spectrogram.png", caption="Mel Spectrogram of the recorded audio file", use_column_width="auto", width=200)
-    speaker, probability, wav_file = classify_speaker(wav_file_path)
-    gender, gen_probability = classify_gender(wav_file_path)
-    
-    # who do u sound like the most?
-    st.write(f"Predicted Gender: {gender}")
-    
-    # how much do u sound like this speaker?
-    st.write(f"Gender Probability: {gen_probability}")
-    
-    # who do u sound like the most?
-    st.write(f"Predicted Speaker: {speaker}")
-    
-    # how much do u sound like this speaker?
-    st.write(f"Speaker Probability: {probability}")
-    
-    # speaker audio
-    st.audio(wav_file)
-    
-    
