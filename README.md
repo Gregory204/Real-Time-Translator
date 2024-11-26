@@ -1,61 +1,87 @@
-# Real-Time-Translator
+# 🌍 **Real-Time Translator**
 
 ## Members:
 Gregory Grullon, Nakib Abedin, Gabriel Menkoff, Ofir Bitton
 
-## Elevator Pitch:
-Real-time voice translator to make communication easier for everyone
+## 🚀 **Elevator Pitch**
+Real-time voice translator to make communication easier for everyone.
 
-## Project Idea:
-There are billions of people in the world and it is unfortunate that we can’t communicate with many of them because of language barriers. Our project idea is to build a real-time translator in order to facilitate communication between different people. What we will do at a high level is take in a sample vocal input from the user, translate what they’re saying to English, and then play an English translation of what they’re saying as a voice-over. If you’ve ever seen an interview of a person speaking a different language, that’s exactly what we’re going for. Instead of having a person do the translation, we want to do it in an automated manner to make a live-translation tool available to the masses.
+## 💡 **Project Idea**
+There are billions of people in the world, and unfortunately, language barriers prevent us from communicating with many of them. This project aims to build a real-time translator to facilitate communication between people speaking different languages. Here's the idea:
 
-## How it Will Work:
-Receive input in a foreign language
-Identify vocal inflection points for the input speaker
-Match the user’s speaking patterns with the patterns for the 109 pre-recorded speakers we have
-Translate what the user is saying into English
-Produce a voice-over in English that plays at the same time as what the input user is saying
+🎙️ **Input:** Capture the user's vocal input.  
+🔁 **Translate:** Automatically translate it to English.  
+🗣️ **Output:** Play the English translation as a voice-over in near real-time.
 
-## Datasets:
-English Multispeaker Corpus for Voice Cloning: https://www.kaggle.com/datasets/mfekadu/english-multispeaker-corpus-for-voice-cloning/data
-Speech Accent Archive: https://www.kaggle.com/datasets/rtatman/speech-accent-archive
+Think of interviews where a translator speaks over the original speaker—our tool automates that process to bring live translation to the masses.
 
-## Project Blueprint: Real-Time Voice Translator
+---
 
-### Input Processing:
-Receive input in a foreign language.
-Use a microphone to capture user speech
+## 🔧 **How It Works**
+1. 🎤 **Receive Input:** Record speech in a foreign language using a microphone.
+2. 📈 **Analyze Vocal Inflection:** Identify pitch, tones, and pauses to segment audio.
+3. 🧑‍🤝‍🧑 **Match Patterns:** Compare speaking patterns to 109 pre-recorded speakers.
+4. 🌐 **Translate:** Convert speech to English using a model or translation API.
+5. 🎧 **Voice-Over:** Generate an English voice-over that matches the user's tone and sync it with the original audio.
 
-### Speech Recognition:
-Implement Whisper model for STT
-Pre-Process audio input (such as sampling rate, normalization
-Use a whisper model to transcribe audio.
+---
 
-### Vocal Inflection:
-Use audio processing libraries such as librosa to get the pitch, tones, and pauses. (Segment the audio into phrases or sentences)
+## 📊 **Datasets**
+- [English Multispeaker Corpus for Voice Cloning](https://www.kaggle.com/datasets/mfekadu/english-multispeaker-corpus-for-voice-cloning/data)  
+- [Speech Accent Archive](https://www.kaggle.com/datasets/rtatman/speech-accent-archive)  
 
-### Accent Classification
-Train a model using the 109 pre-recorded speakers for accent classification.
-Will require MFCC.
-Use Neural Networks (ex: CNNs, RNNs)
+---
 
-### Translate:
-Foreign Language to English:
-Use google translate api or a pre-trained model
+## 🔨 **Project Blueprint**
 
-### Voice Generating:
-Have a tts system to create a english voice over.
-Check if the TTS output can almost mimic the user’s o.g. Vocals.
-Sync the TTS output with o.g. Audio in somewhat real time possibly with 1 second or sentence delay.
+### 🛠️ **Input Processing**
+- Receive speech input in a foreign language.
+- Use a microphone to capture the user's voice.
 
-### Integrating:
-Develop a pipeline to bring all these steps together.
+### 🎙️ **Speech Recognition**
+- Use Speech Recognition Library for speech-to-text (STT).
+- Pre-process audio (e.g., sampling rate, normalization).
+- Transcribe audio using Google TTS.
 
-### User Interface:
-Create a User Interface.. More Details Later
+### 🎵 **Vocal Inflection**
+- Extract features like pitch & tone using **Librosa**.
+- Segment audio into meaningful phrases or sentences.
 
-### Testing Phase:
+### 🗺️ **Speaker Classification**
+- Train a model with 10 pre-recorded speakers for speaker recognition.
+- Extract features like **Mel Spectrograms**.
+- Use Artificial Nerual Network for classification.
 
-### Deployment:
+### 🌐 **Translation**
+- Translate speech to English using the Google Translate API.
 
-### Further improvement and Feedback.
+### 🗣️ **Voice Generation**
+- Use a **TTS (Text-to-Speech)** system to generate an English voice-over.
+- Aim for the TTS to output audio correlated to users voice.
+- Synchronize TTS output with the original audio (allowing for a slight delay).
+
+### 🔗 **Integration**
+- Develop a robust pipeline to connect all components seamlessly.
+
+### 🖥️ **User Interface**
+- Build a simple and intuitive interface for the tool. **STREAMLIT**
+
+---
+
+## ✅ **Testing Phase**
+- Conduct extensive testing with diverse inputs to ensure accuracy and reliability.
+
+---
+
+## 🌐 **Deployment**
+- Host the application on the cloud or make it available for local use (curr plans).
+
+---
+
+## 🚀 **Future Improvements**
+- Collect user feedback to refine the tool.
+- Expand support for more languages and accents.
+- Reduce latency for real-time processing.
+
+---
+
