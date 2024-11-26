@@ -37,7 +37,12 @@ Think of interviews where a translator speaks over the original speaker—our to
 ### 🛠️ **Input Processing**
 - Receive speech input in a foreign language.
 - Use a microphone to capture the user's voice.
-
+### 🗣️ **Languages**
+  - Japansese
+  - Russian
+  - French
+  - Spanish
+  - Italian
 ### 🎙️ **Speech Recognition**
 - Use Speech Recognition Library for speech-to-text (STT).
 - Pre-process audio (e.g., sampling rate, normalization).
