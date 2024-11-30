@@ -85,6 +85,7 @@ Think of interviews where a translator speaks over the original speaker—our to
 
 ## 🚧 **Construction**
 - Currently working on generating voice-overs in English for non-English speakers.
+- Find a way to optimize the code for faster processing.
 
 ---
 
