@@ -86,12 +86,11 @@ Think of interviews where a translator speaks over the original speaker—our to
 ## 🚧 **Construction**
 - Currently working on generating voice-overs in English for non-English speakers.
 - Find a way to optimize the code for faster processing.
-
 ---
 
 ## 🚀 **Future Improvements**
 - Collect user feedback to refine the tool.
 - Expand support for more languages and accents.
 - Reduce latency for real-time processing.
-
+- Mobile integration 📲
 ---
