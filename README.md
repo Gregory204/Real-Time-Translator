@@ -20,7 +20,7 @@ Think of interviews where a translator speaks over the original speaker—our to
 ## 🔧 **How It Works**
 1. 🎤 **Receive Input:** Record speech in a foreign language using a microphone.
 2. 📈 **Analyze Vocal Inflection:** Identify pitch, tones, and pauses to segment audio.
-3. 🧑‍🤝‍🧑 **Match Patterns:** Compare speaking patterns to 109 pre-recorded speakers.
+3. 🧑‍🤝‍🧑 **Match Patterns:** Compare speaking patterns to 10 pre-recorded speakers.
 4. 🌐 **Translate:** Convert speech to English using a model or translation API.
 5. 🎧 **Voice-Over:** Generate an English voice-over that matches the user's tone and sync it with the original audio.
 
